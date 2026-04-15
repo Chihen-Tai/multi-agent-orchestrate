@@ -1,7 +1,11 @@
 ---
 name: multi-agent-orchestrate
 description: Orchestrate tasks across Codex CLI, Copilot CLI, and Gemini CLI. Routes by task type, collects outputs, and synthesizes a final answer.
-origin: local
+triggers:
+  - "orchestrate"
+  - "delegate to agents"
+  - "use all agents"
+  - "codex + copilot + gemini"
 ---
 
 # Multi-Agent Orchestrator
@@ -33,12 +37,12 @@ Invoke this skill when the user asks to:
 | `high_stakes` | Codex → Copilot → Gemini |
 | `documentation` | Gemini (draft) → Codex (verify) |
 
-## Python Orchestrator (already built)
+## Python Orchestrator
 
-Located at `/Applications/codes/AI_agent/orchestrator/`.
+The `orchestrator/` directory contains a ready-to-use Python implementation.
 
 ```bash
-cd /Applications/codes/AI_agent/orchestrator
+cd orchestrator
 
 # General coding task
 python main.py "add error handling to login" --type general
@@ -95,8 +99,7 @@ When orchestrating manually (without the Python script):
 
 ## Known Issues
 
-- Gemini CLI may hit 429 (`MODEL_CAPACITY_EXHAUSTED`) during peak hours — the orchestrator handles this gracefully and reports the error without crashing
-- Gemini uses model `gemini-3.1-pro-preview` by default; fallback: `gemini -m gemini-2.0-flash -p "..."`
+- Gemini CLI may hit 429 (`MODEL_CAPACITY_EXHAUSTED`) during peak hours — fallback: `gemini -m gemini-2.0-flash -p "..."`
 - All three CLIs must be authenticated before use
 
 ## Safety Rules
