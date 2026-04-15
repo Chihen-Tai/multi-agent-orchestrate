@@ -31,39 +31,20 @@ User Request
 
 ## Installation
 
-### As a Claude Code Skill
+Paste this prompt into Claude Code:
 
-Copy the skill into your Claude skills directory:
+```
+Please install the multi-agent-orchestrate skill from https://github.com/Chihen-Tai/multi-agent-orchestrate.git
 
-```bash
-git clone https://github.com/Chihen-Tai/multi-agent-orchestrate.git \
-  ~/.claude/skills/multi-agent-orchestrate
+Run: git clone https://github.com/Chihen-Tai/multi-agent-orchestrate.git ~/.claude/skills/multi-agent-orchestrate
+
+Then confirm the skill is available by checking ~/.claude/skills/multi-agent-orchestrate/SKILL.md exists.
 ```
 
-Then invoke it in Claude Code with:
+After installation, invoke it anytime with:
 
 ```
 /multi-agent-orchestrate
-```
-
-### Python Orchestrator
-
-A ready-to-use Python orchestrator is available at `/Applications/codes/AI_agent/orchestrator/`.
-
-```bash
-cd /Applications/codes/AI_agent/orchestrator
-
-# General coding task
-python main.py "add error handling to login" --type general
-
-# Architecture decision
-python main.py "design a caching layer" --type architecture
-
-# High-risk change
-python main.py "refactor the auth module" --type high_stakes
-
-# Documentation
-python main.py "document the REST API" --type documentation
 ```
 
 ## Prerequisites
@@ -87,6 +68,19 @@ codex exec "your prompt"
 
 # Copilot — non-interactive
 gh copilot -- -p "your prompt" --allow-all-tools
+```
+
+## Python Orchestrator
+
+A ready-to-use Python orchestrator is included. Usage:
+
+```bash
+cd /Applications/codes/AI_agent/orchestrator
+
+python main.py "add error handling to login" --type general
+python main.py "design a caching layer"      --type architecture
+python main.py "refactor the auth module"    --type high_stakes
+python main.py "document the REST API"       --type documentation
 ```
 
 ## Safety Rules
